@@ -1,6 +1,6 @@
 ---
 - name: Criar VLAN e configurar IP
-  hosts: fortiswitch
+  hosts: fortiswitch48
   gather_facts: no
 
   vars_prompt:
