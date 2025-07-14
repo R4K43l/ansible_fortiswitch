@@ -1,0 +1,34 @@
+---
+- name: Criar VLAN e configurar IP
+  hosts: fortiswitch
+  gather_facts: no
+
+  vars_prompt:
+    - name: "vlan_id"
+      prompt: "ID da VLAN"
+      private: no
+
+    - name: "vlan_name"
+      prompt: "Nome da VLAN"
+      private: no
+
+    - name: "vlan_ip"
+      prompt: "IP da VLAN (ex: 192.168.100.1)"
+      private: no
+
+    - name: "vlan_netmask"
+      prompt: "Máscara (ex: 255.255.255.0)"
+      private: no
+
+
+  tasks:
+    - name: Configurar SVI
+      ansible.builtin.raw: |
+        config system interface
+        edit {{ vlan_name }}
+        set vlanid {{ vlan_id }}
+        set interface internal
+        set ip {{ vlan_ip }} {{ vlan_netmask }}
+        set allowaccess ping http https ssh
+        next
+        end
