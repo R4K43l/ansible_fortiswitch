@@ -7,7 +7,7 @@
     - name: Configurar Flap-Guard
       ansible.builtin.raw: |
         config switch physical-port
-        edit {{ port_id }}
+        edit port{{ port_id }}
         set flapguard enable
         set flap-rate {{ flap_rate }}
         set flap-duration {{ flap_duration }}
