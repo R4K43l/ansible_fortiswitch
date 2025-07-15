@@ -1,0 +1,9 @@
+---
+- name: Resetar Flap-Guard
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Executar reset do Flap-Guard
+      ansible.builtin.raw: |
+        execute flapguard reset {{ port_id }}
