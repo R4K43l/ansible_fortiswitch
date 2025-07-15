@@ -6,10 +6,10 @@
     - name: Configurar SVI
       ansible.builtin.raw: |
         config system interface
-        edit {{ vlan_name }}
-        set vlanid {{ vlan_id }}
+        edit USERS
+        set vlanid 25
         set interface internal
-        set ip {{ vlan_ip }} {{ vlan_netmask }}
+        set ip 10.11.11.11 255.255.255.0
         set allowaccess ping http https ssh
         next
         end
