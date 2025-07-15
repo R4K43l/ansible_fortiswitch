@@ -11,6 +11,6 @@
         config med-network-policy
         edit "voice"
         set status enable
-        set vlan-intf {{ vlan_name }}
+        set vlan {{ vlan_name }}
         next
         end
