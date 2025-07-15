@@ -1,0 +1,16 @@
+---
+- name: Criar LLDP Profile para voz
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Configurar LLDP Profile
+      ansible.builtin.raw: |
+        config switch lldp profile
+        edit {{ lldp_name }}
+        config med-network-policy
+        edit "voice"
+        set status enable
+        set vlan-intf {{ vlan_name }}
+        next
+        end
