@@ -1,25 +1,6 @@
----
 - name: Criar VLAN e configurar IP
   hosts: fortiswitch48
   gather_facts: no
-
-  vars_prompt:
-    - name: "vlan_id"
-      prompt: "ID da VLAN"
-      private: no
-
-    - name: "vlan_name"
-      prompt: "Nome da VLAN"
-      private: no
-
-    - name: "vlan_ip"
-      prompt: "IP da VLAN (ex: 192.168.100.1)"
-      private: no
-
-    - name: "vlan_netmask"
-      prompt: "Máscara (ex: 255.255.255.0)"
-      private: no
-
 
   tasks:
     - name: Configurar SVI
