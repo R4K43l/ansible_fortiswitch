@@ -1,0 +1,13 @@
+---
+- name: Configurar MAC Limit em uma porta
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Definir limite de MACs
+      ansible.builtin.raw: |
+        config switch interface
+        edit {{ port_id }}
+        set learning-limit {{ limit }}
+        next
+        end
