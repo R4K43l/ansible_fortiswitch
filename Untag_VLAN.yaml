@@ -1,0 +1,13 @@
+---
+- name: Atribuir VLAN de acesso na interface
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Configurar VLAN na porta
+      ansible.builtin.raw: |
+        config switch interface
+        edit {{ port_id }}
+        set native-vlan {{ vlan_id }}
+        next
+        end
