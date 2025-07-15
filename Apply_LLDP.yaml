@@ -1,0 +1,13 @@
+---
+- name: Atribuir LLDP profile na interface
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Configurar LLDP na porta
+      ansible.builtin.raw: |
+        config switch physical-port
+        edit {{ port_id }}
+        set lldp-profile {{ lldp_name }}
+        next
+        end
