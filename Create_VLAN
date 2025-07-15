@@ -1,0 +1,13 @@
+---
+- name: Criar VLAN
+  hosts: fortiswitch48
+  gather_facts: no
+
+  tasks:
+    - name: Configurar VLAN
+      ansible.builtin.raw: |
+        config switch vlan
+        edit {{ vlan_id }}
+        set description {{ description }}
+        next
+        end
